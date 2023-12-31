@@ -116,7 +116,7 @@ public class PlayGame {
          if (pt == Piece.PAWN && to.rank() == 7) {
             System.out.println("promote to? ");
             String promote = in.readLine();
-            if (promote.length() != 1) { throw new IllegalArgumentException("promote piece must be 1 char"); }
+            if (promote==null || promote.length() != 1) { throw new IllegalArgumentException("promote piece must be 1 char"); }
             Piece promotedPiece = Piece.convertStringToPieceType(promote.charAt(0));
             if (promotedPiece == Piece.PAWN || promotedPiece == Piece.KING) { throw new IllegalArgumentException("cannot promote to a pawn or a king"); }
             m = Move.createPromotionMove(from.index(), to.index(), Pieces.fromPiece(promotedPiece, game.getPosition().getSideToMove()));

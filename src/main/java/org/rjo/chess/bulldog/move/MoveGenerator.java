@@ -884,7 +884,7 @@ public class MoveGenerator implements MoveGeneratorI {
          } else if (Pieces.isKnight(pieceOnStartSq)) {
             generateKnightMoves(posn, startSq, colour, moves, checkMask);
          } else if (Pieces.isKing(pieceOnStartSq)) {
-            throw new IllegalStateException(String.format("called processSquare (sq=%s) with King:\n%s", Square.toSquare(startSq), posn));
+            throw new IllegalStateException(String.format("called processSquare (sq=%s) with King:%n%s", Square.toSquare(startSq), posn));
          } else {
             MoveNode targetNode = moveNodes[Pieces.toPiece(pieceOnStartSq).ordinal()][startSq];
             while (targetNode != null) {

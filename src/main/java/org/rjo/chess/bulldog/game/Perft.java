@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -189,8 +190,8 @@ public class Perft {
     */
    public static int countMoves(Map<String, Integer> moveMap) {
       int nbrMoves = 0;
-      for (String move : moveMap.keySet()) {
-         nbrMoves += moveMap.get(move);
+      for (Entry<String,Integer> e: moveMap.entrySet()) {
+    	  nbrMoves += e.getValue();
       }
       return nbrMoves;
    }

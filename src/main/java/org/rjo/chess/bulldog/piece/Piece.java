@@ -4,7 +4,8 @@ import org.rjo.chess.bulldog.board.Ray;
 
 /**
  * 
- * Comments taken from https://www.chessprogramming.org/Simplified_Evaluation_Function.
+ * Comments taken from
+ * https://www.chessprogramming.org/Simplified_Evaluation_Function.
  * 
  * @author rich
  */
