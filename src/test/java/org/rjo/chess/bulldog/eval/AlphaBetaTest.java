@@ -8,39 +8,39 @@ import org.rjo.chess.bulldog.game.Game;
 
 public class AlphaBetaTest {
 
-   @Test
-   public void alphabetaWIP() {
-      Game game = Fen.decode("8/5n2/8/8/pk6/4K3/P3NP2/8 w - - 0 15");
-      SearchStrategy strat = new AlphaBeta3(System.out);
-      strat.incrementDepth(2);
-      MoveInfo m = strat.findMove(game.getPosition());
-      assertEquals("e3-d3", m.getMove().toString());
-   }
+	@Test
+	public void alphabetaWIP() {
+		Game game = Fen.decode("8/5n2/8/8/pk6/4K3/P3NP2/8 w - - 0 15");
+		SearchStrategy strat = new AlphaBeta3(System.out);
+		strat.incrementDepth(4);
+		MoveInfo m = strat.findMove(game.getPosition());
+		assertEquals("e3-d3", m.getMove().toString());
+	}
 
-   @Test
-   public void badMove() {
-      Game game = Fen.decode("rnbqk1nr/pppp1ppp/8/3P4/8/2N5/PP1QPPPP/R3KBNR b KQkq - 2 7");
-      SearchStrategy strat = new AlphaBeta3(System.out);
-      strat.incrementDepth(1);
-      // AlphaBeta3.ORDER_MOVES = false;
-      MoveInfo m = strat.findMove(game.getPosition());
-      assertEquals("d8-f6", m.getMove().toString());
-   }
+	@Test
+	public void badMove() {
+		Game game = Fen.decode("rnbqk1nr/pppp1ppp/8/3P4/8/2N5/PP1QPPPP/R3KBNR b KQkq - 2 7");
+		SearchStrategy strat = new AlphaBeta3(System.out);
+		strat.incrementDepth(1);
+		// AlphaBeta3.ORDER_MOVES = false;
+		MoveInfo m = strat.findMove(game.getPosition());
+		assertEquals("d8-f6", m.getMove().toString());
+	}
 
-   // mate in 1 Qc1-h6 posns evaluated:25191
-   // with move ordering: posns evaluated 8821
-   // depth 5: posns evaluated 83751
-   @Test
-   public void mateInOne() {
-      Game game = Fen.decode("4r1k1/3R2pp/2N3p1/2p5/6PK/r7/6P1/2q5 b - - 67 34");
-      SearchStrategy strat = new AlphaBeta3(System.out);
-      strat.incrementDepth(1);
-      MoveInfo m = strat.findMove(game.getPosition());
-      assertEquals("c1-h6+", m.getMove().toString());
-   }
+	// mate in 1 Qc1-h6 posns evaluated:25191
+	// with move ordering: posns evaluated 8821
+	// depth 5: posns evaluated 83751
+	@Test
+	public void mateInOne() {
+		Game game = Fen.decode("4r1k1/3R2pp/2N3p1/2p5/6PK/r7/6P1/2q5 b - - 67 34");
+		SearchStrategy strat = new AlphaBeta3(System.out);
+		strat.incrementDepth(1);
+		MoveInfo m = strat.findMove(game.getPosition());
+		assertEquals("c1-h6+", m.getMove().toString());
+	}
 
-   // TODO
-   /*
+	// TODO
+	/*
     * @formatter:off
     * 2017-12-26 16:41:48.963<--1:after move Rg3xg8+, fen:r1b2kR1/pppp1p2/2n1p2p/7q/2BPP3/2P2N2/P1PKQP1P/R7 b - - 27 14
     * 2017-12-26 16:41:48.963<--1:set strategy depth to 4
@@ -58,7 +58,7 @@ public class AlphaBetaTest {
     * @formatter:on
     */
 
-   /*
+	/*
     * @formatter:off
     * self-mate
     * 2017-12-27 20:13:41.995-->1:position startpos
@@ -74,16 +74,16 @@ public class AlphaBetaTest {
     * 2017-12-27 20:13:49.348*1*Found move:Ra8-f8
     * @formatter:on
     */
-   @Test
-   public void easierUCIString() {
-      // Game game = Fen.decode("6k1/6pp/6p1/8/3p2PK/2pr4/6P1/2q5 b - - 67 34");
-      Game game = Fen.decode("r1bnk3/pp1p2pp/3P2p1/Q3P3/6q1/8/PP4PP/R4RK1 w - - 5 6");
-      SearchStrategy strat = new AlphaBeta3(System.out);
-      MoveInfo m = strat.findMove(game.getPosition());
-      System.out.println(m);
-   }
+	@Test
+	public void easierUCIString() {
+		// Game game = Fen.decode("6k1/6pp/6p1/8/3p2PK/2pr4/6P1/2q5 b - - 67 34");
+		Game game = Fen.decode("r1bnk3/pp1p2pp/3P2p1/Q3P3/6q1/8/PP4PP/R4RK1 w - - 5 6");
+		SearchStrategy strat = new AlphaBeta3(System.out);
+		MoveInfo m = strat.findMove(game.getPosition());
+		System.out.println(m);
+	}
 
-   /*
+	/*
     * @formatter:off
     * 2017-12-27 19:49:24.409-->1:position startpos moves d2d4 e7e6 e2e4 b8c6 g1f3 g8f6 b1c3 f8b4 f1d3 d7d5 e1g1 b4c3 b2c3 d5e4 d3e4 f6e4
     * f1e1 e4c3 d1d3 c3d5 c1a3 a7a6 c2c4 d5f6 d4d5 e6e5 d5c6 d8d3 c6b7 c8b7 f3e5 d3a3 e5g6
@@ -96,7 +96,7 @@ public class AlphaBetaTest {
     * 2017-12-27 19:49:24.435<--1: at org.rjo.chess.Position.move(Position.java:476)
     * @formatter:on
     */
-   /*
+	/*
     * @formatter:off
     * 2017-12-27 10:57:44.286-->1:position startpos moves d2d4 e7e6 c2c4 b8c6 d4d5 e6d5 g1f3 f8b4 b1c3 d5c4 e2e4 d8e7 f1c4 e7e4 c4e2 g8f6
     * e1g1 b4c3 b2c3 e4d5 c3c4 d5d1 f1d1 e8g8 c1f4 d7d6 c4c5 d6c5 f4c7 c8g4 h2h3 f8e8 g1f1 a8c8 c7g3 g4h5 a1c1 f6e4 e2c4 e4g3 f2g3 c6a5 g3g4 a5c4 c1c4 h5g6
@@ -150,11 +150,11 @@ public class AlphaBetaTest {
     * @formatter:on
     */
 
-   @Test
-   public void fromFenString() {
-      Game game = Fen.decode("r2r2k1/pR3p1p/2n5/3N2p1/2P1p1b1/P1B1P3/2K3PP/5R2 b - - 1 22");
-      SearchStrategy strat = new AlphaBeta3(System.out);
-      MoveInfo m = strat.findMove(game.getPosition());
-      System.out.println(m);
-   }
+	@Test
+	public void fromFenString() {
+		Game game = Fen.decode("r2r2k1/pR3p1p/2n5/3N2p1/2P1p1b1/P1B1P3/2K3PP/5R2 b - - 1 22");
+		SearchStrategy strat = new AlphaBeta3(System.out);
+		MoveInfo m = strat.findMove(game.getPosition());
+		System.out.println(m);
+	}
 }
